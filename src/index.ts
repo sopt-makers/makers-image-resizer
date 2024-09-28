@@ -13,6 +13,9 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+		const url = new URL(request.url);
+		const query = url.searchParams.get("ab")
+
+		return new Response('Hello World! ' + url.pathname + query);
 	},
 } satisfies ExportedHandler<Env>;
