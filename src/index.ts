@@ -73,8 +73,6 @@ export default {
 			headers: request.headers,
 		});
 
-		console.log(options);
-
 		return fetch(imageRequest, options);
 	},
 } satisfies ExportedHandler<Env>;
