@@ -14,6 +14,7 @@
 interface CfImageOptions {
 	width?: number;
 	format?: 'avif' | 'webp';
+	blur?: number;
 }
 
 export default {
@@ -33,6 +34,14 @@ export default {
 			const width = parseInt(widthParam, 10);
 			if (!isNaN(width)) {
 				options.cf.image.width = width;
+			}
+		}
+
+		const blurParam = url.searchParams.get('blur');
+		if (blurParam) {
+			const blur = parseInt(blurParam, 10);
+			if (!isNaN(blur) && blur >= 1 && blur <= 250) {
+				options.cf.image.blur = blur;
 			}
 		}
 
